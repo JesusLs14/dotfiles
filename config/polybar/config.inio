@@ -1,0 +1,49 @@
+[colors]
+bg = #1c1c1c
+fg = #ffffff
+accent = #5f87ff
+
+[bar/main]
+width = 100%
+height = 26
+background = ${colors.bg}
+foreground = ${colors.fg}
+font-0 = JetBrainsMono:size=10
+modules-left = cpu memory battery
+modules-right = spotify cava  
+tray-position = right
+
+[module/i3]
+type = internal/i3
+label-focused = %name%
+label-focused-foreground = ${colors.accent}
+
+[module/cpu]
+type = internal/cpu
+label = CPU %percentage%%
+
+[module/memory]
+type = internal/memory
+label = RAM %used%
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+label-discharging = Bat %percentage%%
+
+[module/date]
+type = internal/date
+date = %H:%M
+
+[module/spotify]
+type = custom/script
+exec = ~/.config/polybar/spotify.sh
+interval = 2
+label = %output%
+
+[module/cava]
+type = custom/script
+exec = ~/.config/polybar/cava.sh
+tail = true
+label = %output%
